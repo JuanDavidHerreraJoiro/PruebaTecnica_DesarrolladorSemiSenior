@@ -1,0 +1,100 @@
+<div class="finder">
+  <h1 style="text-align: center">Find GitHub User</h1>
+
+  <br />
+  <div style="text-align: center">
+    <div class="pseudo-search" style="text-align: center">
+      <input type="text" value="mojombo" [(ngModel)]="input"/>
+      <img src="../../../assets/github.png" />
+      <button type="submit" (click)="onClick()">
+        <div>
+          <img src="../../../assets/buscar.png" />
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <br />
+  <br />
+  <div>
+    <div class="card">
+      <div class="additional">
+
+        <div class="user-card">
+          <div class="coords center">
+            <div fxLayout="column"  fxLayoutAlign="space-evenly center">
+              <div class="level">
+                <span *ngIf="usuario?.login">{{usuario?.login | uppercase}}</span>
+                <span *ngIf="!usuario?.login">No disponible</span>
+              </div>
+              <div>
+                <img class="round" *ngIf="usuario?.avatar_url" src={{usuario?.avatar_url}} />
+                <img class="round" *ngIf="!usuario?.avatar_url" src="https://cdn-icons-png.flaticon.com/512/219/219988.png" />
+              </div>
+              <div class="points">
+                <span *ngIf="usuario?.created_at">{{usuario?.created_at | date:'EEE MMM dd yyyy'}}</span>
+                <span *ngIf="!usuario?.created_at">No disponible</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="more-info">
+          <br />
+          <h1 style="text-align: center; font-size: 25px" *ngIf="usuario?.name">{{usuario?.name | titlecase}}</h1>
+          <h1 style="text-align: center; font-size: 25px" *ngIf="!usuario?.name">No disponible</h1>
+
+          <div class="coords">
+            <div class="row justify-content-between">
+              <div class="col-5">
+                <div class="title">
+                  <i class="material-icons" style="font-size: 15px">location_on</i>
+                  <span *ngIf="usuario?.location" style="font-size: 12px">{{usuario?.location | titlecase}}</span>
+                  <span *ngIf="!usuario?.location" style="font-size: 12px">No disponible</span>
+                </div>
+              </div>
+              <div class="col-7">
+                <div style="text-align: end">
+                  <i class="material-icons" style="font-size: 15px">alternate_email</i>
+                  <span *ngIf="usuario?.login" style="font-size: 12px">{{usuario?.login}}</span>
+                  <span *ngIf="!usuario?.login" style="font-size: 12px">No disponible</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="coords center">
+            <div style="justify-items: center;">
+              <i class="material-icons" style="font-size: 20px">language</i>
+              <a href={{usuario?.blog}} *ngIf="usuario?.blog">{{usuario?.blog}}</a>
+              <a href="#" *ngIf="!usuario?.blog">No disponible</a>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div>
+              <div class="title">Repos</div>
+              <i class="material-icons" style="font-size: 30px">share</i>
+              <div class="value" *ngIf="usuario?.public_repos">{{usuario?.public_repos}}</div>
+              <div class="value" *ngIf="!usuario?.public_repos">0</div>
+            </div>
+            <div>
+              <div class="title">followers</div>
+              <i class="material-icons" style="font-size: 30px">groups_3</i>
+              <div class="value" *ngIf="usuario?.followers">{{usuario?.followers}}</div>
+              <div class="value" *ngIf="!usuario?.followers">0</div>
+            </div>
+            <div>
+              <div class="title">following</div>
+              <i class="material-icons" style="font-size: 30px">group</i>
+              <div class="value" *ngIf="usuario?.following">{{usuario?.following}}</div>
+              <div class="value" *ngIf="!usuario?.following">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
